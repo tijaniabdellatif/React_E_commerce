@@ -19,7 +19,6 @@ h1{
     color:red;
 }
 
-
 `;
 
 export default Testing;

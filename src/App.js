@@ -1,16 +1,54 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components';
-import Testing from './testing';
+
+import {Home,
+  About,
+  Cart,
+  CheckOut,
+  Product,
+  SingleProduct,
+  Error,Private} from './pages';
+
+
+
 
 
 function App() {
   return(
-    <> 
-    <h4>Ecommerce Projectr</h4>
-  
-    <Testing />
-     </>
+    <Router> 
+       <Navbar />
+       <Sidebar />
+   <Switch>
+
+     <Route exact path='/'>
+        <Home />
+     </Route>
+
+     <Route exact path='/products'>
+        <Product />
+     </Route>
+
+     <Route exact path='/about'>
+        <About />
+     </Route>
+
+     <Route exact path='/cart'>
+        <Cart />
+     </Route>
+
+     <Route exact path="/products/:id" children={<SingleProduct />} />
+
+     <Route excat path="/checkout">
+        <CheckOut />
+     </Route>
+
+     <Route path='*'>
+        <Error />
+     </Route>
+   </Switch>
+   <Footer />
+     </Router>
   );
   
 }
