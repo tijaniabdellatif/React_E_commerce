@@ -13,13 +13,68 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
 
-const initialState = {}
+const initialState = {
+
+  isSidebarOpen : false,
+  productsLoading : false,
+  productsError : false,
+  products:[],
+  featuredProducts :[]
+
+}
 
 const ProductsContext = React.createContext()
 
 export const ProductsProvider = ({ children }) => {
+  const [state,dispatch] = useReducer(reducer,initialState)
+
+  /*
+    Open Side bar context
+  */
+const openSidebar = () => {
+  dispatch({type:SIDEBAR_OPEN})
+}
+const closeSidebar = () => {
+  dispatch({type:SIDEBAR_CLOSE})
+}
+
+
+/* Product Context */
+const fetchProducts = async(url) => {
+ 
+  dispatch({type:GET_PRODUCTS_BEGIN})
+
+  try{
+    const response = await axios.get(url,{
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const products = response.data;
+    dispatch({type:GET_PRODUCTS_SUCCESS,payload:products})
+    
+  }catch(error){
+      
+    dispatch({type:GET_PRODUCTS_ERROR});
+      
+     
+  }
+
+  
+}
+
+useEffect(() =>{
+
+  fetchProducts(`${url}`);
+
+},[])
+
+
+
+
   return (
-    <ProductsContext.Provider value='products context'>
+    <ProductsContext.Provider value={{...state,openSidebar,closeSidebar}}>
       {children}
     </ProductsContext.Provider>
   )

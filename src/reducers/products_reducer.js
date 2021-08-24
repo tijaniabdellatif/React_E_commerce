@@ -10,7 +10,42 @@ import {
 } from '../actions'
 
 const products_reducer = (state, action) => {
-  return state
+
+  if(action.type === SIDEBAR_OPEN){
+
+    return{...state,isSidebarOpen:true}
+  }
+  
+  if(action.type === SIDEBAR_CLOSE){
+
+    return{...state,isSidebarOpen:false}
+  }
+
+  if(action.type===GET_PRODUCTS_BEGIN){
+
+    return {...state,productsLoading:true}
+  }
+
+  if(action.type===GET_PRODUCTS_SUCCESS){
+
+    const featuredProducts = action.payload.filter((prod)=>{
+
+                     return prod.featured === true;
+    })
+
+   return {
+     ...state,
+     productsLoading:false,
+     products:action.payload,
+     featuredProducts:featuredProducts
+    }
+  }
+
+  if(action.type === GET_PRODUCTS_ERROR){
+
+    return {...state,productsLoading:false,productsError:true}
+  }
+
   throw new Error(`No Matching "${action.type}" - action type`)
 }
 

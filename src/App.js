@@ -10,10 +10,6 @@ import {Home,
   SingleProduct,
   Error,Private} from './pages';
 
-
-
-
-
 function App() {
   return(
     <Router> 
