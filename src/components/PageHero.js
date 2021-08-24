@@ -6,7 +6,7 @@ const PageHero = ({title}) => {
   
   <div className="section-center">
     <h3>
-      <Link to="/"> Home </Link>/{title}
+      <Link to="/">Home</Link>/ {title}
     </h3>
   </div>
 
