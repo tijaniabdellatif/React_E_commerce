@@ -7,7 +7,33 @@ import CartItem from './CartItem'
 import CartTotals from './CartTotals'
 
 const CartContent = () => {
- return <h1>CartContent</h1>
+  const {cart,clearCart} = useCartContext(); 
+ return (<Wrapper className="section section-center">
+
+   <CartColumns />
+
+   {
+     cart.map((item) => {
+
+            return <CartItem key={item.id} {...item} />
+     })
+   }
+   <hr />
+
+   <div className="link-container">
+          <Link to="/products" className="link-btn">
+            Continue shopping
+          </Link>
+              
+          <button type="button" className="link-btn clear-btn" onClick={clearCart}>
+             
+             Clear Cart
+          </button>
+   </div>
+
+   <CartTotals />
+      
+ </Wrapper>)
 }
 const Wrapper = styled.section`
   .link-container {

@@ -6,9 +6,33 @@ import { CartContent, PageHero } from '../components'
 
 const CartPage = () => {
 
- return <Wrapper>
-   cart page
- </Wrapper>
+const {cart} = useCartContext();
+
+if(cart.length < 1){
+
+  return <Wrapper className="page-100">
+  
+  <div className="empty">
+    <h2>Your Cart is empty</h2>
+    <Link to="/products" className="btn">
+      Continue shopping
+    </Link>
+  </div>
+
+  </Wrapper>
+
+}
+
+ return (<main>
+   
+   <PageHero title="cart" />
+
+   <Wrapper className="page">
+      
+      <CartContent />
+   </Wrapper>
+   
+ </main>)
 }
 
 const Wrapper = styled.main`

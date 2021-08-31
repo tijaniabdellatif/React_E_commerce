@@ -16,12 +16,33 @@ const cart_reducer = (state, action) => {
 
     const tempItem = state.cart.find((item) => item.id === id + color);
 
+    console.log(tempItem);
+
     if(tempItem)
     {
-      //cart est deja rempli
-      //cart on va le parcourir
-      //check si id = id + color 
-      //on check sur Amount (max)
+      
+      const tempCart = state.cart.map((item) => {
+  
+        if(item.id === id + color)
+        {
+           let newAmount = item.amount + amount
+             
+                     if(newAmount > item.max)
+                     {
+                       newAmount = item.max
+                     }
+
+                     return {...item,amount:newAmount}
+
+        }
+        else{
+           
+          return item;
+        }
+
+      })
+
+      return {...state,cart:tempCart}
 
     }
     else
