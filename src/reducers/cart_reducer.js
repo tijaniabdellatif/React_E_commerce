@@ -13,8 +13,34 @@ const cart_reducer = (state, action) => {
   {
 
     const {id,color,amount,product} = action.payload;
-    console.log(action.payload);
-    return state;
+
+    const tempItem = state.cart.find((item) => item.id === id + color);
+
+    if(tempItem)
+    {
+      //cart est deja rempli
+      //cart on va le parcourir
+      //check si id = id + color 
+      //on check sur Amount (max)
+
+    }
+    else
+    {
+      const newItem = {
+
+        id : id + color,
+        name:product.name,
+        color,
+        amount,
+        image:product.images[0].url,
+        price : product.price,
+        max : product.stock
+
+      }
+
+      return {...state,cart:[...state.cart,newItem]}
+
+    }
    
   }
 
