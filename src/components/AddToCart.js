@@ -7,10 +7,10 @@ import AmountButtons from './AmountButtons'
 
 const AddToCart = ({product}) => {
   
+
+
   const{id,stock,colors} = product;
 
-  // console.log(colors);
- 
   const [mainColor,setMainColor] = useState(colors[0]);
   const [amount,setAmount] = useState(1);
 
@@ -76,7 +76,8 @@ const AddToCart = ({product}) => {
       <Link
        to="/cart" 
        className="btn" 
-       style={{textAlign:'center'}}>
+       style={{textAlign:'center'}}
+       >
 
         Add to cart
 

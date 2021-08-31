@@ -7,7 +7,7 @@ import CartItem from './CartItem'
 import CartTotals from './CartTotals'
 
 const CartContent = () => {
-  return <h4>cart content </h4>
+ return <h1>CartContent</h1>
 }
 const Wrapper = styled.section`
   .link-container {

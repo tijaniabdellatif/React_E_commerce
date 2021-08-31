@@ -8,13 +8,20 @@ import {
   COUNT_CART_TOTALS,
 } from '../actions'
 
-const initialState = {}
+
+
+const initialState = {
+  
+}
 
 const CartContext = React.createContext()
 
 export const CartProvider = ({ children }) => {
+
+
+
   return (
-    <CartContext.Provider value='cart context'>{children}</CartContext.Provider>
+    <CartContext.Provider value='value'>{children}</CartContext.Provider>
   )
 }
 // make sure use
