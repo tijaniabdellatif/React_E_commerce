@@ -10,6 +10,7 @@ const AddToCart = ({product}) => {
 
 
   const{id,stock,colors} = product;
+  const {addToCart} = useCartContext();
 
   const [mainColor,setMainColor] = useState(colors[0]);
   const [amount,setAmount] = useState(1);
@@ -77,6 +78,7 @@ const AddToCart = ({product}) => {
        to="/cart" 
        className="btn" 
        style={{textAlign:'center'}}
+       onClick={() => addToCart(id,mainColor,amount,product) }
        >
 
         Add to cart
