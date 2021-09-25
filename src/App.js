@@ -39,7 +39,7 @@ function App() {
         <CheckOut />
      </Route>
 
-     <Route path='*'>
+     <Route path="*">
         <Error />
      </Route>
    </Switch>
