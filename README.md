@@ -24,3 +24,18 @@ FAST_REFRESH=FALSE
 
 #### Styled Components : 
 ('https://styled-components.com/')
+
+Cart : 
+
+1- Cart context
+2 - AddtoCart setup
+3- AddtoCart reducer new item
+4 - Cart page Setup
+5 - Localstorage
+6 - Cart content
+7 - Cart Columns
+8 - Cart totals
+9 _ cart items
+10 - remove item and clear cart
+11 - toggle amount
+12 - subtotals

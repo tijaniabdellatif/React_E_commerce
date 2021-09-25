@@ -19,13 +19,17 @@ const initialState = {
   productsLoading : false,
   productsError : false,
   products:[],
-  featuredProducts :[]
+  featuredProducts :[],
+  singleProductLoading:false,
+  singleProductError:false,
+  singleProduct:{}
 
 }
 
 const ProductsContext = React.createContext()
 
 export const ProductsProvider = ({ children }) => {
+  console.log(children);
   const [state,dispatch] = useReducer(reducer,initialState)
 
   /*
@@ -39,7 +43,7 @@ const closeSidebar = () => {
 }
 
 
-/* Product Context */
+/* Products Context */
 const fetchProducts = async(url) => {
  
   dispatch({type:GET_PRODUCTS_BEGIN})
@@ -60,8 +64,31 @@ const fetchProducts = async(url) => {
       
      
   }
+}
 
+/**
+ * Single Product Context
+ */
+const fetchSingleProduct = async(url) => {
+
+  dispatch({type:GET_SINGLE_PRODUCT_BEGIN})
   
+  try{
+    const response = await axios.get(url,{
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const singleProducts = response.data;
+    dispatch({type: GET_SINGLE_PRODUCT_SUCCESS,payload:singleProducts})
+    
+  }catch(error){
+      
+    dispatch({type:GET_SINGLE_PRODUCT_ERROR});
+      
+     
+  }
 }
 
 useEffect(() =>{
@@ -74,7 +101,7 @@ useEffect(() =>{
 
 
   return (
-    <ProductsContext.Provider value={{...state,openSidebar,closeSidebar}}>
+    <ProductsContext.Provider value={{...state,openSidebar,closeSidebar,fetchSingleProduct}}>
       {children}
     </ProductsContext.Provider>
   )

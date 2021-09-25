@@ -14,8 +14,6 @@ const Sidebar = () => {
 
    const {isSidebarOpen,closeSidebar} = useProductsContext();
  
-
-   const isOpen = false;
   return(
     <SidebarContainer>
       <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' :'sidebar'}`}>
