@@ -13,14 +13,17 @@ ReactDOM.render(
     <Auth0Provider
         domain='devserver-auth.eu.auth0.com'
         clientId='wDC7soZLYH9R0pR6diCHRkC04HD8GX0x'
-        redirectUri={window.location.origin}>
-        <ProductsProvider>
-            <FilterProvider>
-                <CartProvider>
-                    <App />
-                </CartProvider>
-            </FilterProvider>
-        </ProductsProvider>
+        redirectUri={window.location.origin}
+         cacheLocation='localstorage'>
+        <UserProvider>
+            <ProductsProvider>
+                <FilterProvider>
+                    <CartProvider>
+                        <App />
+                    </CartProvider>
+                </FilterProvider>
+            </ProductsProvider>
+        </UserProvider>
     </Auth0Provider>
 
 ,
